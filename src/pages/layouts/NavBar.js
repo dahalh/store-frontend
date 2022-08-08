@@ -7,6 +7,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import UserSidebar from "../../components/SideBar/Sidebar";
 import Button from "react-bootstrap/esm/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -33,8 +34,10 @@ const NavBar = () => {
             {/* <Nav.Link href="#pricing">Log In</Nav.Link> */}
           </Nav>
 
-          <Navbar.Brand className="md-auto" href="#home">
-            Jersey Shop
+          <Navbar.Brand className="md-auto">
+            <Link className="nav-link" to="/">
+              Jersey Shop
+            </Link>
           </Navbar.Brand>
 
           <Nav className="ms-auto mt-3">

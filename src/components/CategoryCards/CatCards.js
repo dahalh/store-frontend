@@ -4,25 +4,20 @@ import Container from "react-bootstrap/esm/Container";
 import pic1 from "../../carousel-images/pic1.jpg";
 import pic2 from "../../carousel-images/pic2.jpg";
 import pic3 from "../../carousel-images/pic-3.avif";
-import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 
 const items = [
   {
     title: "Arsenal",
     image: pic2,
-    desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, cum",
   },
 
   {
     title: "Random",
     image: pic1,
-    desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, cum",
   },
   {
     title: "Brazil",
     image: pic3,
-    desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, cum",
   },
 ];
 
@@ -36,7 +31,6 @@ const CatCards = () => {
             <Card.Img variant="top" height="300px" src={jersey.image} />
             <Card.Body>
               <Card.Title className="text-center">{jersey.title}</Card.Title>
-              <Card.Text>{jersey.desc}</Card.Text>
             </Card.Body>
           </Card>
         ))}

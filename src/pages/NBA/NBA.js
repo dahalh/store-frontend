@@ -1,5 +1,6 @@
 import React from "react";
+import DefaultLayout from "../layouts/DefaultLayout";
 
 export const NBA = () => {
-  return <div>NBA</div>;
+  return <DefaultLayout>NBA</DefaultLayout>;
 };

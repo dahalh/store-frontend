@@ -1,5 +1,6 @@
 import React from "react";
+import DefaultLayout from "../layouts/DefaultLayout";
 
 export const Club = () => {
-  return <div>Club</div>;
+  return <DefaultLayout>Club</DefaultLayout>;
 };

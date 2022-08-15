@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import Container from "react-bootstrap/esm/Container";
+import DefaultLayout from "../../pages/layouts/DefaultLayout";
 
 const products = [
   {
@@ -10,18 +12,58 @@ const products = [
       "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/4c76b49a-1e27-46d4-99ca-7a99a0306113/zion-2-basketball-shoes-XjhskN.png",
       "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ccae9e3e-2f66-45db-9384-3a26815b6815/zion-2-basketball-shoes-XjhskN.png",
     ],
-    description: "UI/UX designing, html css tutorials",
-    content:
-      "Welcome to our channel Dev AT. Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.",
-    price: 23,
+    description: "Zion 2",
+    content: "The New Zion Shoes",
+    price: 230,
     colors: ["red", "black", "crimson", "teal"],
     count: 1,
   },
 ];
 
 const ProductView = () => {
-  useEffect(() => {});
-  return <div>ProductView</div>;
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const handleTab = (index) => {
+    // alert(index);
+    setImageIndex(index);
+  };
+
+  return (
+    <DefaultLayout className="prodView">
+      <Container>
+        {products.map((item, index) => (
+          <div className="details" key={item._id}>
+            <div className="big-img">
+              {/* <img src={item.src[index]} alt="" /> */}
+              <img src={item.src[imageIndex]} alt="" />
+            </div>
+            <div className="box">
+              <div className="row">
+                <h2>{item.title}</h2>
+                <span>${item.price}</span>
+              </div>
+
+              <p>{item.description}</p>
+              <p>{item.content}</p>
+
+              <div className="thumb">
+                {item.src.map((img, index) => (
+                  <img
+                    src={img}
+                    alt=""
+                    key={index}
+                    onClick={() => handleTab(index)}
+                  />
+                ))}
+              </div>
+
+              <button className="cart">Add to cart</button>
+            </div>
+          </div>
+        ))}
+      </Container>
+    </DefaultLayout>
+  );
 };
 
 export default ProductView;

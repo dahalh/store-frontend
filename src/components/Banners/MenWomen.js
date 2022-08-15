@@ -9,7 +9,7 @@ import pic1 from "../../carousel-images/pic1.jpg";
 const MenWomen = () => {
   return (
     <Container className="mb-5 d-flex flex-wrap justify-content-center align-content-center">
-      <h2>Men or Womens</h2>
+      <h2 className="mb-4">Men or Womens</h2>
       <Row>
         {/* <Col>1 of 2</Col>
         <Col>2 of 2</Col> */}

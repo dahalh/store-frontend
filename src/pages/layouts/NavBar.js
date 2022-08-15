@@ -2,8 +2,8 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
-import Dropdown from "react-bootstrap/Dropdown";
 import UserSidebar from "../../components/SideBar/Sidebar";
 import Button from "react-bootstrap/esm/Button";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -21,16 +21,7 @@ const NavBar = () => {
             <Nav.Link href="">
               <i className="fa-solid fa-cart-shopping fa-lg"></i>
             </Nav.Link>
-            <Dropdown>
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                <i className="fa-solid fa-shirt fa-lg"></i>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+
             {/* <Nav.Link href="#pricing">Log In</Nav.Link> */}
           </Nav>
 
@@ -47,6 +38,48 @@ const NavBar = () => {
                 <i className="fa-solid fa-magnifying-glass"></i>
               </Button>
             </InputGroup>
+          </Nav>
+        </Container>
+      </Navbar>
+
+      <Navbar className="navbar-cat">
+        <Container className="d-flex justify-content-center">
+          <Nav>
+            <Nav.Link className="drop">
+              <NavDropdown title="Category 1" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#/action-2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#/action-3">
+                  Something else
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Link>
+            <Nav.Link className="drop">
+              <NavDropdown title="Category 2" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#/action-2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#/action-3">
+                  Something else
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Link>
+            <Nav.Link className="drop">
+              <NavDropdown title="Category 3" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#/action-2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#/action-3">
+                  Something else
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Link>
+
+            {/* <Nav.Link href="#pricing">Log In</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>

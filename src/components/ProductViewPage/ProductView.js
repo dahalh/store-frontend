@@ -22,16 +22,23 @@ const products = [
 
 const ProductView = () => {
   const [imageIndex, setImageIndex] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [show, setShow] = useState(false);
 
   const handleTab = (index) => {
     // alert(index);
     setImageIndex(index);
   };
 
+  const handleOnClick = (item) => {
+    cart.push(item);
+    console.log(cart);
+  };
+
   return (
     <DefaultLayout className="prodView">
       <Container>
-        {products.map((item, index) => (
+        {products.map((item) => (
           <div className="details" key={item._id}>
             <div className="big-img">
               {/* <img src={item.src[index]} alt="" /> */}
@@ -50,6 +57,7 @@ const ProductView = () => {
                 {item.src.map((img, index) => (
                   <img
                     src={img}
+                    className={index === imageIndex ? "active" : ""}
                     alt=""
                     key={index}
                     onClick={() => handleTab(index)}
@@ -57,7 +65,9 @@ const ProductView = () => {
                 ))}
               </div>
 
-              <button className="cart">Add to cart</button>
+              <button onClick={() => handleOnClick(item)} className="addCart">
+                Add to cart
+              </button>
             </div>
           </div>
         ))}

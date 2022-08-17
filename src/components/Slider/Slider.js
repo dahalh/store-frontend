@@ -12,8 +12,8 @@ import Container from "react-bootstrap/esm/Container";
 
 const Slider = () => {
   return (
-    <Container className="mt-4 mb-4">
-      <Carousel>
+    <Container className="mt-4 mb-4 d-flex justify-content-center">
+      <Carousel className="w-75">
         <Carousel.Item>
           <Link className="nav-link" to="/national">
             <img

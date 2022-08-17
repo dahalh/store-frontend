@@ -18,16 +18,13 @@ const NavBar = () => {
             <Nav.Link href="">
               <i className="fa-solid fa-user fa-lg"></i>
             </Nav.Link>
-            <Nav.Link href="">
-              <i className="fa-solid fa-cart-shopping fa-lg"></i>
-            </Nav.Link>
 
             {/* <Nav.Link href="#pricing">Log In</Nav.Link> */}
           </Nav>
 
           <Navbar.Brand className="md-auto">
             <Link className="nav-link" to="/">
-              Jersey Shop
+              Jersey Store
             </Link>
           </Navbar.Brand>
 
@@ -38,6 +35,17 @@ const NavBar = () => {
                 <i className="fa-solid fa-magnifying-glass"></i>
               </Button>
             </InputGroup>
+          </Nav>
+
+          <Nav>
+            <Nav.Link href="">
+              <div className="cart">
+                <span>
+                  <i className="fa-solid fa-cart-shopping fa-lg"></i>
+                </span>
+                <span>1</span>
+              </div>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

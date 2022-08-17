@@ -4,6 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import pic1 from "../../carousel-images/pic1.jpg";
 import pic2 from "../../carousel-images/pic2.jpg";
 import pic3 from "../../carousel-images/pic-3.avif";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -34,6 +35,15 @@ const CatCards = () => {
             </Card.Body>
           </Card>
         ))}
+        <div className="d-flex justify-content-center align-items-center">
+          <Link className="nav-link" id="view-more" to="/">
+            <i
+              style={{ color: "blue", fontweight: "bold", fontsize: "150%" }}
+              className="fa-solid fa-arrow-right-long"
+            ></i>
+            View More
+          </Link>
+        </div>
       </div>
     </Container>
   );

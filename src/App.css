@@ -127,7 +127,7 @@
   opacity: 1;
   border: 1px solid lightseagreen;
 }
-.box .cart {
+.box .addCart {
   background: #333;
   color: white;
   outline: none;
@@ -137,11 +137,42 @@
   margin-top: 15px;
 }
 
+/* add to cart */
+.cart {
+  cursor: pointer;
+}
+
+.cart span:nth-child(1) {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.cart span:nth-child(2) {
+  padding: 0 3px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+  top: -18px;
+  left: -7px;
+}
+
+/*  */
+
 @media (max-width: 500px) {
   .thumb {
     height: 50px;
   }
   .thumb img {
     width: 50px;
+  }
+}
+
+/*  */
+
+@media only screen and (max-width: 576px) {
+  #view-more {
+    display: none;
   }
 }

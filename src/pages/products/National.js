@@ -57,17 +57,20 @@ export const National = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
 
+  const [allProducts, setAllProducts] = useState();
+
   useEffect(() => {
     dispatch(fetchProductsAction());
+    // setAllProducts(products);
   }, []);
 
-  // console.log(products);
-  console.log(products.map((product) => product.id));
-  console.log(items);
+  console.log("all", products);
+  // console.log(products.map((product) => product.id));
+  // console.log(items);
 
   return (
     <DefaultLayout>
-      <Container className="mb-5 mt-5">
+      {/* <Container className="mb-5 mt-5">
         <div className="cat-cards d-flex flex-wrap justify-content-evenly align-content-center">
           {items.map((prods) => (
             <Card
@@ -85,23 +88,12 @@ export const National = () => {
             </Card>
           ))}
         </div>
-      </Container>
-      {/* <Container className="mb-5 mt-5">
-        <div className="cat-cards d-flex flex-wrap justify-content-evenly align-content-center">
-          {products.map((product) => {
-            return (
-              <ProductCard
-                id={product.id}
-                category={product.category}
-                description={product.description}
-                price={product.price}
-                rating={product.rating}
-                title={product.title}
-              />
-            );
-          })}
-        </div>
       </Container> */}
+      <Container className="mb-5 mt-5">
+        <div>
+          <ProductCard products={products} />
+        </div>
+      </Container>
     </DefaultLayout>
   );
 };

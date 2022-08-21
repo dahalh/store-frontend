@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/esm/Card";
 import { Link } from "react-router-dom";
 
-// const ProductCard = ({
-//   category,
-//   description,
-//   id,
-//   image,
-//   price,
-//   rating,
-//   title,
-// })
-const ProductCard = ({ products }) => {
+const ProductCard = ({ chosenProduct }) => {
   // console.log(id);
 
+  const [clickedProduct, setClickedProduct] = useState({});
+
+  const handleOnClick = (item) => {
+    setClickedProduct(item);
+    console.log(clickedProduct);
+  };
+
   return (
-    <div className="cat-cards d-flex flex-wrap justify-content-evenly align-content-center">
-      {products.map((allProd) => (
-        <Card key={allProd.id} className="p-1 mb-4" style={{ width: "14rem" }}>
-          <Link to={`/product/${allProd.id}`} className="nav-link">
-            <Card.Img variant="top" height="200px" src={allProd.image} />
-          </Link>
+    // <div className="catCards d-flex flex-wrap justify-content-evenly align-content-center">
+    <div className="catCards">
+      {chosenProduct.map((product) => (
+        <Card key={product.id} className="p-1 mb-4" style={{ width: "14rem" }}>
+          <Card.Img variant="top" height="200px" src={product.image} />
           <Card.Body>
-            <Card.Title className="text-center">{allProd.title}</Card.Title>
-            <Card.Text>Rating: {allProd.rating.rate}</Card.Text>
+            <Card.Title className="text-center">{product.title}</Card.Title>
+            <Card.Text>Rating: {product.rating.rate}</Card.Text>
           </Card.Body>
+          <Link
+            to={`/product/${product.id}`}
+            className="nav-link d-flex align-items-center justify-content-center"
+          >
+            <Button
+              onClick={() => handleOnClick(product)}
+              className="product-click"
+            >
+              View
+            </Button>
+          </Link>
         </Card>
       ))}
     </div>

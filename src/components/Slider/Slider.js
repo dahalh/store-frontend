@@ -15,7 +15,8 @@ const Slider = () => {
     <Container className="mt-4 mb-4 d-flex justify-content-center">
       <Carousel className="w-75">
         <Carousel.Item>
-          <Link className="nav-link" to="/national">
+          <Link className="nav-link" to="/product/national">
+            {/* <Link className="nav-link" to="/product"> */}
             <img
               className="slider d-block w-100 img-thumbnail"
               // style={{ height: 400 }}

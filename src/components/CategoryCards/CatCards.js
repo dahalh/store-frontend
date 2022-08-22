@@ -26,9 +26,9 @@ const CatCards = () => {
   return (
     <Container className="mb-5">
       <h3 className="text-center mb-4">Popular Items</h3>
-      <div className="cat-cards d-flex flex-wrap justify-content-around">
+      <div className="cat-cards d-flex flex-wrap justify-content-center">
         {items.map((jersey, i) => (
-          <Card key={i} className="p-2 mb-3" style={{ width: "14rem" }}>
+          <Card key={i} className="p-2 m-3" style={{ width: "14rem" }}>
             <Card.Img variant="top" height="300px" src={jersey.image} />
             <Card.Body>
               <Card.Title className="text-center">{jersey.title}</Card.Title>

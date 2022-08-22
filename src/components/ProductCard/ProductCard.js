@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/esm/Card";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ chosenProduct }) => {
-  // console.log(id);
-
   const [clickedProduct, setClickedProduct] = useState({});
 
-  const handleOnClick = (item) => {
-    setClickedProduct(item);
-    console.log(clickedProduct);
+  const handleOnClick = (product) => {
+    setClickedProduct(product);
+    console.log(product);
   };
+  console.log(clickedProduct);
 
   return (
     // <div className="catCards d-flex flex-wrap justify-content-evenly align-content-center">
@@ -25,6 +24,7 @@ const ProductCard = ({ chosenProduct }) => {
           </Card.Body>
           <Link
             to={`/product/${product.id}`}
+            // to={`/national/${product.id}`}
             className="nav-link d-flex align-items-center justify-content-center"
           >
             <Button

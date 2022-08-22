@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import DefaultLayout from "../../pages/layouts/DefaultLayout";
+import { fetchProductsAction } from "../../pages/products/productAction";
 
-const products = [
+const displayProducts = [
   {
     _id: "1",
     title: "Nike Shoes",
@@ -21,9 +24,23 @@ const products = [
 ];
 
 const ProductView = () => {
+  const dispatch = useDispatch();
   const [imageIndex, setImageIndex] = useState(0);
   const [cart, setCart] = useState([]);
   const [show, setShow] = useState(false);
+
+  const { products } = useSelector((state) => state.product);
+
+  const { id } = useParams();
+  const product = products.find((product) => +product.id === +id);
+  const [chosenProduct, setChosenProduct] = useState(product);
+  console.log(product);
+  // setChosenProduct(product);
+  // console.log(chosenProduct);
+
+  // useEffect(() => {
+  //   dispatch(fetchProductsAction());
+  // }, []);
 
   const handleTab = (index) => {
     // alert(index);
@@ -38,39 +55,40 @@ const ProductView = () => {
   return (
     <DefaultLayout className="prodView">
       <Container>
-        {products.map((item) => (
-          <div className="details" key={item._id}>
-            <div className="big-img">
-              {/* <img src={item.src[index]} alt="" /> */}
-              <img src={item.src[imageIndex]} alt="" />
-            </div>
-            <div className="box">
-              <div className="row">
-                <h2>{item.title}</h2>
-                <span>${item.price}</span>
-              </div>
-
-              <p>{item.description}</p>
-              <p>{item.content}</p>
-
-              <div className="thumb">
-                {item.src.map((img, index) => (
-                  <img
-                    src={img}
-                    className={index === imageIndex ? "active" : ""}
-                    alt=""
-                    key={index}
-                    onClick={() => handleTab(index)}
-                  />
-                ))}
-              </div>
-
-              <button onClick={() => handleOnClick(item)} className="addCart">
-                Add to cart
-              </button>
-            </div>
+        <div className="details">
+          <div className="big-img">
+            {/* <img src={item.src[index]} alt="" /> */}
+            {/* <img src={chosenProduct.image[imageIndex]} alt="" /> */}
+            <img src={chosenProduct.image} alt="" />
           </div>
-        ))}
+          <div className="box">
+            <div className="row">
+              <h2>{chosenProduct.title}</h2>
+              <span>${chosenProduct.price}</span>
+            </div>
+
+            <p>{chosenProduct.description}</p>
+
+            <div className="thumb">
+              {/* {chosenProduct.image.map((image, index) => ( */}
+              <img
+                src={chosenProduct.image}
+                // className={index === imageIndex ? "active" : ""}
+                alt=""
+                // key={index}
+                // onClick={() => handleTab(index)}
+              />
+              {/* ))} */}
+            </div>
+
+            <button
+              onClick={() => handleOnClick(chosenProduct)}
+              className="addCart"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
       </Container>
     </DefaultLayout>
   );

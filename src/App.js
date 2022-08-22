@@ -13,10 +13,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/national" element={<National />} />
+          <Route path="/product/national" element={<National />} />
+          {/* <Route path="/product" element={<National />} /> */}
           <Route path="/club" element={<Club />} />
           <Route path="/nba" element={<NBA />} />
-          <Route path="/product/:_id" element={<ProductView />} />
+          <Route path="/product/:id" element={<ProductView />} />
+          {/* <Route path="/national/:_id" element={<ProductView />} /> */}
           <Route path="/productcard" element={<ProductCard />} />
         </Routes>
       </BrowserRouter>

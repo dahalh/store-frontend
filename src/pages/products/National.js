@@ -3,7 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Card from "react-bootstrap/esm/Card";
 import DefaultLayout from "../layouts/DefaultLayout";
 import nba from "../../carousel-images/nba.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAction } from "./productAction";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -59,7 +59,7 @@ export const National = () => {
 
   useEffect(() => {
     dispatch(fetchProductsAction());
-  }, []);
+  }, [dispatch]);
 
   console.log("all", products);
   // console.log(products.map((product) => product.id));

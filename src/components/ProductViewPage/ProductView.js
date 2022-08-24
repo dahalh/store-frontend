@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addCartItems } from "../../pages/Cart/cartAction";
 import DefaultLayout from "../../pages/layouts/DefaultLayout";
 import { fetchProductsAction } from "../../pages/products/productAction";
+import Button from "react-bootstrap/esm/Button";
 
 const displayProducts = [
   {
@@ -24,9 +27,11 @@ const displayProducts = [
 ];
 
 const ProductView = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [imageIndex, setImageIndex] = useState(0);
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  const cart = [];
   const [show, setShow] = useState(false);
 
   const { products } = useSelector((state) => state.product);
@@ -34,13 +39,9 @@ const ProductView = () => {
   const { id } = useParams();
   const product = products.find((product) => +product.id === +id);
   const [chosenProduct, setChosenProduct] = useState(product);
-  console.log(product);
+  // console.log(product);
   // setChosenProduct(product);
   // console.log(chosenProduct);
-
-  // useEffect(() => {
-  //   dispatch(fetchProductsAction());
-  // }, []);
 
   const handleTab = (index) => {
     // alert(index);
@@ -49,12 +50,17 @@ const ProductView = () => {
 
   const handleOnClick = (item) => {
     cart.push(item);
-    console.log(cart);
+    dispatch(addCartItems(cart));
   };
 
   return (
     <DefaultLayout className="prodView">
       <Container>
+        <div className="mt-3 mb-3">
+          <Button variant="none" onClick={() => navigate(-1)}>
+            <i className="fa-solid fa-arrow-left"></i> Back
+          </Button>
+        </div>
         <div className="details">
           <div className="big-img">
             {/* <img src={item.src[index]} alt="" /> */}
@@ -79,6 +85,10 @@ const ProductView = () => {
                 // onClick={() => handleTab(index)}
               />
               {/* ))} */}
+            </div>
+
+            <div className="quantity">
+              Quantity: <input className="form" type="number" maxLength="10" />
             </div>
 
             <button

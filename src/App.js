@@ -6,6 +6,7 @@ import { National } from "./pages/products/National";
 import { Club } from "./pages/products/Club";
 import { NBA } from "./pages/products/NBA";
 import ProductCard from "./components/ProductCard/ProductCard";
+import CartPage from "./pages/Cart/CartPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/product/:id" element={<ProductView />} />
           {/* <Route path="/national/:_id" element={<ProductView />} /> */}
           <Route path="/productcard" element={<ProductCard />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
     </div>

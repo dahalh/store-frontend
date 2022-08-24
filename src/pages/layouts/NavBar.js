@@ -15,9 +15,9 @@ const NavBar = () => {
       <Navbar className="navbar">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link href="">
+            <Link className="nav-link" to="">
               <i className="fa-solid fa-user fa-lg"></i>
-            </Nav.Link>
+            </Link>
 
             {/* <Nav.Link href="#pricing">Log In</Nav.Link> */}
           </Nav>
@@ -38,14 +38,14 @@ const NavBar = () => {
           </Nav>
 
           <Nav>
-            <Nav.Link href="">
+            <Link className="nav-link" to="/cart">
               <div className="cart">
                 <span>
                   <i className="fa-solid fa-cart-shopping fa-lg"></i>
                 </span>
                 <span>1</span>
               </div>
-            </Nav.Link>
+            </Link>
           </Nav>
         </Container>
       </Navbar>
@@ -55,13 +55,16 @@ const NavBar = () => {
           <Nav>
             <Nav.Link className="drop">
               <NavDropdown title="Category 1" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#/action-2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#/action-3">
-                  Something else
-                </NavDropdown.Item>
+                {/* <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item> */}
+                <Link className="nav-link" to="">
+                  <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                </Link>
+                <Link className="nav-link" to="">
+                  <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                </Link>
+                <Link className="nav-link" to="">
+                  <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                </Link>
               </NavDropdown>
             </Nav.Link>
             <Nav.Link className="drop">

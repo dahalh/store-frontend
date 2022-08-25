@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addCartItems } from "../../pages/Cart/cartAction";
 import DefaultLayout from "../../pages/layouts/DefaultLayout";
 import { fetchProductsAction } from "../../pages/products/productAction";
 import Button from "react-bootstrap/esm/Button";
+import { addItemsToCart } from "../../pages/Cart/cartSlice";
 
 const displayProducts = [
   {
@@ -27,6 +27,8 @@ const displayProducts = [
 ];
 
 const ProductView = () => {
+  const qtyRef = useRef(1);
+  console.log(qtyRef);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [imageIndex, setImageIndex] = useState(0);
@@ -35,6 +37,7 @@ const ProductView = () => {
   const [show, setShow] = useState(false);
 
   const { products } = useSelector((state) => state.product);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const { id } = useParams();
   const product = products.find((product) => +product.id === +id);
@@ -48,10 +51,29 @@ const ProductView = () => {
     setImageIndex(index);
   };
 
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(qtyObj));
+  // }, [qtyObj]);
+
   const handleOnClick = (item) => {
-    cart.push(item);
-    dispatch(addCartItems(cart));
+    // cart.push(item);
+    let qty = qtyRef.current.value;
+    console.log(qty);
+    if (qty < 1) {
+      qty = 1;
+    }
+    console.log(qty);
+    const qtyObj = { qty, ...item };
+    console.log(qtyObj);
+    // dispatch(addItemsToCart(item));
+    dispatch(addItemsToCart(qtyObj));
+    localStorage.setItem("cart", JSON.stringify(qtyObj));
+    // console.log(item);
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <DefaultLayout className="prodView">
@@ -88,7 +110,7 @@ const ProductView = () => {
             </div>
 
             <div className="quantity">
-              Quantity: <input className="form" type="number" maxLength="10" />
+              Quantity: <input ref={qtyRef} type="number" />
             </div>
 
             <button

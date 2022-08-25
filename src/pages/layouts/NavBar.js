@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,8 +8,15 @@ import UserSidebar from "../../components/SideBar/Sidebar";
 import Button from "react-bootstrap/esm/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  // const { cartItems } = useSelector((state) => state.cart);
+  // const numItems = cartItems.length;
+
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+  const numItems = cartFromLocalStorage.length;
+
   return (
     <>
       <Navbar className="navbar">
@@ -43,13 +50,13 @@ const NavBar = () => {
                 <span>
                   <i className="fa-solid fa-cart-shopping fa-lg"></i>
                 </span>
-                <span>1</span>
+                {/* <span>1</span> */}
+                <span>{numItems > 0 ? numItems : "0"}</span>
               </div>
             </Link>
           </Nav>
         </Container>
       </Navbar>
-
       <Navbar className="navbar-cat">
         <Container className="d-flex justify-content-center">
           <Nav>

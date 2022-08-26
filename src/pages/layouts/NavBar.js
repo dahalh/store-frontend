@@ -62,9 +62,8 @@ const NavBar = () => {
           <Nav>
             <Nav.Link className="drop">
               <NavDropdown title="Category 1" id="basic-nav-dropdown">
-                {/* <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item> */}
-                <Link className="nav-link" to="">
-                  <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>
+                <Link className="nav-link" to="/cart">
+                  Cart
                 </Link>
                 <Link className="nav-link" to="">
                   <NavDropdown.Item href="#/action-1">Action</NavDropdown.Item>

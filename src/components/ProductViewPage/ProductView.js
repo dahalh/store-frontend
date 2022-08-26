@@ -97,8 +97,9 @@ const ProductView = () => {
               {/* ))} */}
             </div>
 
-            <div className="quantity">
-              Quantity: <input ref={qtyRef} type="number" />
+            <div className="mt-4">
+              Quantity:{" "}
+              <input className="quantity" ref={qtyRef} type="number" />
             </div>
 
             <button

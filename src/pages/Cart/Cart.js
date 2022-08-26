@@ -1,17 +1,24 @@
 import "./cartPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import {
   decreaseItemsToCart,
   removeItemsFromCart,
   addItemsToCart,
   emptyCart,
+  calculatePrices,
 } from "./cartSlice";
 
 const Cart = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+  const { cartTotalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(calculatePrices());
+  }, [cartItems, dispatch]);
 
   const handleOnAddItem = (item) => {
     dispatch(addItemsToCart(item));
@@ -27,7 +34,6 @@ const Cart = () => {
   const handleOnEmptyCart = (item) => {
     dispatch(emptyCart(item));
   };
-  const { cartItems } = useSelector((state) => state.cart);
   return (
     <DefaultLayout>
       <h3 className="cart-title">Cart</h3>
@@ -75,7 +81,9 @@ const Cart = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="cart-product-price">${item.price}</div>
+                  <div className="cart-product-price">
+                    ${item.price.toFixed(2)}
+                  </div>
                   <div className="cart-product-quantity">
                     <button onClick={() => handleOnDecreaseItem(item)}>
                       -
@@ -98,7 +106,7 @@ const Cart = () => {
                 <div className="cart-checkout">
                   <div className="subtotal">
                     <span>Subtotal</span>
-                    {/* <span className="amount">${cart.totalAmount}</span> */}
+                    <span className="amount">${cartTotalAmount}</span>
                   </div>
                   <p>Taxes and shipping calculated at checkout</p>
                   <button>Check out</button>

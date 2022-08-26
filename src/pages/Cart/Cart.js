@@ -7,6 +7,7 @@ import {
   decreaseItemsToCart,
   removeItemsFromCart,
   addItemsToCart,
+  emptyCart,
 } from "./cartSlice";
 
 const Cart = () => {
@@ -22,6 +23,9 @@ const Cart = () => {
 
   const handleOnRemoveItem = (item) => {
     dispatch(removeItemsFromCart(item));
+  };
+  const handleOnEmptyCart = (item) => {
+    dispatch(emptyCart(item));
   };
   const { cartItems } = useSelector((state) => state.cart);
   return (
@@ -85,7 +89,12 @@ const Cart = () => {
                 </div>
               ))}
               <div className="cart-summary">
-                <button className="clear-cart">Clear Cart</button>
+                <button
+                  onClick={() => handleOnEmptyCart()}
+                  className="clear-cart"
+                >
+                  Clear Cart
+                </button>
                 <div className="cart-checkout">
                   <div className="subtotal">
                     <span>Subtotal</span>

@@ -11,11 +11,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  // const { cartItems } = useSelector((state) => state.cart);
-  // const numItems = cartItems.length;
+  const { cartItems } = useSelector((state) => state.cart);
+  const numItems = cartItems.length;
 
-  const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-  const numItems = cartFromLocalStorage.length;
+  // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+  // const numItems = cartFromLocalStorage.length;
 
   return (
     <>

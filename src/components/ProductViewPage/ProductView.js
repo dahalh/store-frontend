@@ -34,10 +34,8 @@ const ProductView = () => {
   const [imageIndex, setImageIndex] = useState(0);
   // const [cart, setCart] = useState([]);
   const cart = [];
-  const [show, setShow] = useState(false);
 
   const { products } = useSelector((state) => state.product);
-  const { cartItems } = useSelector((state) => state.cart);
 
   const { id } = useParams();
   const product = products.find((product) => +product.id === +id);
@@ -51,10 +49,6 @@ const ProductView = () => {
     setImageIndex(index);
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(qtyObj));
-  // }, [qtyObj]);
-
   const handleOnClick = (item) => {
     // cart.push(item);
     let qty = qtyRef.current.value;
@@ -67,13 +61,7 @@ const ProductView = () => {
     console.log(qtyObj);
     // dispatch(addItemsToCart(item));
     dispatch(addItemsToCart(qtyObj));
-    localStorage.setItem("cart", JSON.stringify(qtyObj));
-    // console.log(item);
   };
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
 
   return (
     <DefaultLayout className="prodView">

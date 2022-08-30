@@ -8,14 +8,22 @@ import UserSidebar from "../../components/SideBar/Sidebar";
 import Button from "react-bootstrap/esm/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoriesAction } from "../products/categoryAction";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    dispatch(fetchCategoriesAction());
+  }, [dispatch]);
+
+  const parentCategories = categories.filter((item) => !item.parentCatId);
+  const subCategories = categories.filter((item) => item.parentCatId);
+
   const { cartItems } = useSelector((state) => state.cart);
   const numItems = cartItems.length;
-
-  // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
-  // const numItems = cartFromLocalStorage.length;
 
   return (
     <>

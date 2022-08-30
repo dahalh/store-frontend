@@ -18,7 +18,7 @@ function App() {
           {/* <Route path="/product" element={<National />} /> */}
           <Route path="/club" element={<Club />} />
           <Route path="/nba" element={<NBA />} />
-          <Route path="/product/:id" element={<ProductView />} />
+          <Route path="/product/:_id" element={<ProductView />} />
           {/* <Route path="/national/:_id" element={<ProductView />} /> */}
           <Route path="/productcard" element={<ProductCard />} />
           {/* <Route path="/cart" element={<CartPage />} /> */}
